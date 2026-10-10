@@ -1,0 +1,16 @@
+[Unit]
+Description=OpenCode TeleBridge Gateway
+After=network.target
+
+[Service]
+Type=simple
+# Replace with the path to your repository directory:
+WorkingDirectory=%h/opencode-telebridge
+ExecStart=/usr/bin/python3 %h/opencode-telebridge/bot.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+Environment=PATH=%h/.opencode/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+
+[Install]
+WantedBy=default.target
